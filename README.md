@@ -1,7 +1,7 @@
 
 <img width="297" height="430" alt="Screenshot 2025-11-09 at 23 21 57" src="https://github.com/user-attachments/assets/e2f64bb7-f052-45a3-886a-20eb0f86877b" />
 
-# ⚽ Mini Juego de Penaltis
+# ⚽ 
 
 ### 🛠 Instalación y ejecución
 
