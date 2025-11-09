@@ -4,16 +4,16 @@ import { extend } from "@react-three/fiber";
 
 // shaders d pruebas, no optimizadas ni nada serio, solo para testear
 export function ColorShiftMaterial({ color = new THREE.Color(1, 0, 0), speed = 1 }) {
-  const uniforms = useMemo(
-    () => ({
-      time: { value: 0 },
-      color: { value: color },
-      speed: { value: speed },
-    }),
-    [color, speed]
-  );
+    const uniforms = useMemo(
+        () => ({
+            time: { value: 0 },
+            color: { value: color },
+            speed: { value: speed },
+        }),
+        [color, speed]
+    );
 
-  const vertexShader = `
+    const vertexShader = /* glsl */`
     varying vec2 vUv;
     void main() {
       vUv = uv;
@@ -21,7 +21,7 @@ export function ColorShiftMaterial({ color = new THREE.Color(1, 0, 0), speed = 1
     }
   `;
 
-  const fragmentShader = `
+    const fragmentShader = /* glsl */`
     uniform float time;
     uniform vec3 color;
     uniform float speed;
@@ -32,30 +32,30 @@ export function ColorShiftMaterial({ color = new THREE.Color(1, 0, 0), speed = 1
     }
   `;
 
-  return (
-    <shaderMaterial
-      attach="material"
-      uniforms={uniforms}
-      vertexShader={vertexShader}
-      fragmentShader={fragmentShader}
-    />
-  );
+    return (
+        <shaderMaterial
+            attach="material"
+            uniforms={uniforms}
+            vertexShader={vertexShader}
+            fragmentShader={fragmentShader}
+        />
+    );
 }
 
 
 
 
 export function PulseMaterial({ color = new THREE.Color(0, 0.5, 1), intensity = 1 }) {
-  const uniforms = useMemo(
-    () => ({
-      time: { value: 0 },
-      color: { value: color },
-      intensity: { value: intensity },
-    }),
-    [color, intensity]
-  );
+    const uniforms = useMemo(
+        () => ({
+            time: { value: 0 },
+            color: { value: color },
+            intensity: { value: intensity },
+        }),
+        [color, intensity]
+    );
 
-  const vertexShader = `
+    const vertexShader = /* glsl */`
     varying vec2 vUv;
     void main() {
       vUv = uv;
@@ -63,7 +63,7 @@ export function PulseMaterial({ color = new THREE.Color(0, 0.5, 1), intensity = 
     }
   `;
 
-  const fragmentShader = `
+    const fragmentShader = /* glsl */ `
     uniform float time;
     uniform vec3 color;
     uniform float intensity;
@@ -74,29 +74,29 @@ export function PulseMaterial({ color = new THREE.Color(0, 0.5, 1), intensity = 
     }
   `;
 
-  return (
-    <shaderMaterial
-      attach="material"
-      uniforms={uniforms}
-      vertexShader={vertexShader}
-      fragmentShader={fragmentShader}
-    />
-  );
+    return (
+        <shaderMaterial
+            attach="material"
+            uniforms={uniforms}
+            vertexShader={vertexShader}
+            fragmentShader={fragmentShader}
+        />
+    );
 }
 
 
 
 export function WaveMaterial({ color = new THREE.Color(0.5, 1, 0.3), frequency = 3.0 }) {
-  const uniforms = useMemo(
-    () => ({
-      time: { value: 0 },
-      color: { value: color },
-      frequency: { value: frequency },
-    }),
-    [color, frequency]
-  );
+    const uniforms = useMemo(
+        () => ({
+            time: { value: 0 },
+            color: { value: color },
+            frequency: { value: frequency },
+        }),
+        [color, frequency]
+    );
 
-  const vertexShader = `
+    const vertexShader =/* glsl */ `
     varying vec2 vUv;
     void main() {
       vUv = uv;
@@ -104,7 +104,7 @@ export function WaveMaterial({ color = new THREE.Color(0.5, 1, 0.3), frequency =
     }
   `;
 
-  const fragmentShader = `
+    const fragmentShader =/* glsl */ `
     uniform float time;
     uniform vec3 color;
     uniform float frequency;
@@ -115,14 +115,14 @@ export function WaveMaterial({ color = new THREE.Color(0.5, 1, 0.3), frequency =
     }
   `;
 
-  return (
-    <shaderMaterial
-      attach="material"
-      uniforms={uniforms}
-      vertexShader={vertexShader}
-      fragmentShader={fragmentShader}
-    />
-  );
+    return (
+        <shaderMaterial
+            attach="material"
+            uniforms={uniforms}
+            vertexShader={vertexShader}
+            fragmentShader={fragmentShader}
+        />
+    );
 }
 
 
