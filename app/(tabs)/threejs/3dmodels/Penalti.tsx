@@ -349,7 +349,6 @@ export default function Penalti() {
   );
 }
 
-/* 🔹 Botones dirección */
 function DirectionButton({
   x,
   onClick,
