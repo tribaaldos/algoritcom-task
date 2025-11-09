@@ -23,8 +23,8 @@ import Penalti from './threejs/3dmodels/Penalti';
 
 export default function HomeScreen() {
 
-  // const { createRandomGeometry, reset, RenderMeshes } = useCreateGeometry();
-  const { createInstancedMesh, RenderInstancedMeshes , reset } = useCreateInstanced();
+  const { createRandomGeometry, reset, RenderMeshes } = useCreateGeometry();
+  const { createInstancedMesh, RenderInstancedMeshes , resetInstanced } = useCreateInstanced();
   const [OrbitControls, events] = useControls()
 
   const fps = usePerfStore((state) => state.fps);
@@ -45,14 +45,18 @@ export default function HomeScreen() {
   return (
     <View style={styles.container} {...events}>
       <View style={{ position: 'absolute', top: 40, left: 20, zIndex: 10 }}>
-        {/* <Pressable onPress={createRandomGeometry} style={{ padding: 10, backgroundColor: 'lightblue' }}>
+        <Pressable onPress={createRandomGeometry} style={{ padding: 10, backgroundColor: 'lightblue' }}>
           <Text>Create</Text>
-        </Pressable> */}
+        </Pressable>
         <Pressable onPress={createInstancedMesh} style={{ padding: 10, backgroundColor: 'lightblue' }}>
           <Text>Create Instanced</Text>
         </Pressable>
   
         <Pressable onPress={reset} style={{ padding: 10, backgroundColor: 'lightcoral', marginTop: 10 }}>
+          <Text>Reset</Text>
+        </Pressable>
+  
+        <Pressable onPress={resetInstanced} style={{ padding: 10, backgroundColor: 'lightcoral', marginTop: 10 }}>
           <Text>Reset</Text>
         </Pressable>
         <Text style={{ marginTop: 10, color: 'white' }}>FPS: {fps}</Text>
@@ -69,7 +73,7 @@ export default function HomeScreen() {
       <Canvas shadows>
         {/* <PerfMonitor /> */}
         <OrbitControls />
-        {/* <RenderMeshes /> */}
+        <RenderMeshes />
         <RenderInstancedMeshes />
         <Plane rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]} args={[20, 20]}>
           <WaterMaterial />

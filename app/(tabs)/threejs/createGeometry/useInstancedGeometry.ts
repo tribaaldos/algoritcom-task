@@ -21,10 +21,10 @@ interface GeometryState {
   updateRotation: (id: string, rotation: [number, number, number]) => void;
   updatePosition: (id: string, position: [number, number, number]) => void;
   removeGeometry: (id: string) => void;
-  reset: () => void;
+  resetInstanced: () => void;
 }
 
-export const useGeometryStore = create<GeometryState>()(
+export const useInstancedGeometry = create<GeometryState>()(
   persist(
     (set) => ({
       geometries: [],
@@ -53,7 +53,7 @@ export const useGeometryStore = create<GeometryState>()(
           geometries: state.geometries.filter((geo) => geo.id !== id),
         })),
 
-      reset: () => set({ geometries: [] }),
+      resetInstanced: () => set({ geometries: [] }),
     }),
 
     {

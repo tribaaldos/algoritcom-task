@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber/native";
 import * as THREE from "three";
 import { Instances, Instance } from "@react-three/drei";
 import { useSprings, a } from "@react-spring/three";
-import { useGeometryStore } from "./useCreateGeometry";
+import { useInstancedGeometry } from "./useInstancedGeometry";
 
 /**
  * Hook optimizado con instanced meshes, animaciones y sincronización
@@ -13,11 +13,11 @@ export const useCreateInstanced = () => {
   const {
     geometries,
     addGeometry,
-    reset,
+    resetInstanced,
     removeGeometry,
     updatePosition,
     updateRotation,
-  } = useGeometryStore();
+  } = useInstancedGeometry();
 
   // 🔹 Crea una geometría aleatoria
   const createInstancedMesh = () => {
@@ -141,5 +141,5 @@ export const useCreateInstanced = () => {
     );
   };
 
-  return { createInstancedMesh, reset, RenderInstancedMeshes };
+  return { createInstancedMesh, resetInstanced, RenderInstancedMeshes };
 };

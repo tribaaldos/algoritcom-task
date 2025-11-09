@@ -86,9 +86,9 @@ function GoalText({ visible, onEnd }: { visible: boolean; onEnd?: () => void }) 
     from: { scale: 0, opacity: 0, positionY: 0 },
     to: visible
       ? [
-          { scale: 1.3, opacity: 1, positionY: 0.3 },
-          { scale: 1, opacity: 1, positionY: 0 },
-        ]
+        { scale: 1.3, opacity: 1, positionY: 0.3 },
+        { scale: 1, opacity: 1, positionY: 0 },
+      ]
       : { opacity: 0, scale: 0 },
     config: { tension: 170, friction: 26 },
     onRest: () => !visible && onEnd?.(),
@@ -154,7 +154,7 @@ function FireworkMaterial({ color }: { color: THREE.Color }) {
       vec4 mvPosition = modelViewMatrix * vec4(newPosition, 1.0);
       gl_Position = projectionMatrix * mvPosition;
 
-      gl_PointSize = 40.0 * aSize * (1.0 / -mvPosition.z);
+      gl_PointSize = 120.0 * aSize * (1.0 / -mvPosition.z);
       vAlpha = 1.0 - progress;
       if(gl_PointSize < 1.0) gl_Position = vec4(9999.9);
     }
@@ -260,8 +260,16 @@ export default function Penalti() {
 
       if (pos.z < -6 && pos.y < 1.5) {
         setGoalVisible(true);
-        spawnFirework([0, 2, -6]);
+
+        // lanza fuegos artificiales durante 2 segundos
+        const interval = setInterval(() => {
+          const offsetX = (Math.random() - 0.5) * 4;
+          const offsetY = Math.random() * 3;
+          spawnFirework([offsetX, 2 + offsetY, -6]);
+        }, 300); // cada 300ms
+
         setTimeout(() => {
+          clearInterval(interval);
           setGoalVisible(false);
           setTimeout(() => handleReset(), 1000);
         }, 2000);
